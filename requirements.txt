@@ -1,0 +1,14 @@
+cs50
+Flask
+Flask-Session
+requests
+googletrans
+werkzeug.security
+os
+Pil
+numpy
+requests
+cv2
+random
+string
+colorthief

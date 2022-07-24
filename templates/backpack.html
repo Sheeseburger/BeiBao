@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Backpack
+{% endblock %}
+
+{% block main %}
+{% if jacket %}
+<div id="carouselJacketCaptions" class="carousel slide" data-bs-ride="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselJacketCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    {% for i in range(1,len_jacket) %}
+    <button type="button" data-bs-target="#carouselJacketCaptions" data-bs-slide-to="{{i}}" aria-label="Slide {{i}}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+    {%for i in range(len_jacket) %}
+    {% if i == 0 %}
+    <div class="carousel-item active" id="{{i}}">
+    {% else %}
+    <div class="carousel-item " id="{{i}}">
+      {% endif %}
+      <img src="{{jacket[i]['picture']}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <p>
+          <form action='/delete' method='POST'><input type='hidden' name='delete_item' value="{{jacket[i]['id']}}"/><input type='hidden' name='delete_link' value="{{jacket[i]['picture']}}"/><input type='hidden' name='action' value="0"/><button class="btn btn-outline-light" type="submit">Delete</button></form>
+          {% if not jacket[i]['bag'] %}
+          <form action='/backpack_add' method='POST'><input type='hidden' name='backpack_add' value="{{jacket[i]['id']}}"/><button class="btn btn-outline-light" type="submit">To backpack</button></form>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselJacketCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselJacketCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+{% endif %}
+
+{% if underjacket %}
+<div id="carouselUnderJacketCaptions" class="carousel slide" data-bs-ride="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselUnderJacketCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    {% for i in range(1,len_underjacket) %}
+    <button type="button" data-bs-target="#carouselUnderJacketCaptions" data-bs-slide-to="{{i}}" aria-label="Slide {{i}}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+    {%for i in range(len_underjacket) %}
+    {% if i == 0 %}
+    <div class="carousel-item active" id="{{i}}">
+    {% else %}
+    <div class="carousel-item " id="{{i}}">
+      {% endif %}
+      <img src="{{underjacket[i]['picture']}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <p>
+          <form action='/delete' method='POST'><input type='hidden' name='delete_item' value="{{underjacket[i]['id']}}"/><input type='hidden' name='delete_link' value="{{underjacket[i]['picture']}}"/><input type='hidden' name='action' value="0"/><button class="btn btn-outline-light" type="submit">Delete</button></form>
+          {% if not underjacket[i]['bag'] %}
+          <form action='/backpack_add' method='POST'><input type='hidden' name='backpack_add' value="{{underjacket[i]['id']}}"/><button class="btn btn-outline-light" type="submit">To backpack</button></form>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselUnderJacketCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselUnderJacketCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+{% endif %}
+
+{% if pants %}
+<div id="carouselPantsCaptions" class="carousel slide" data-bs-ride="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselPantsCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    {% for i in range(1,len_pants) %}
+    <button type="button" data-bs-target="#carouselPantsCaptions" data-bs-slide-to="{{i}}" aria-label="Slide {{i}}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+    {%for i in range(len_pants) %}
+    {% if i == 0 %}
+    <div class="carousel-item active" id="{{i}}">
+    {% else %}
+    <div class="carousel-item " id="{{i}}">
+      {% endif %}
+      <img src="{{pants[i]['picture']}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <p>
+          <form action='/delete' method='POST'><input type='hidden' name='delete_item' value="{{pants[i]['id']}}"/><input type='hidden' name='delete_link' value="{{pants[i]['picture']}}"/><input type='hidden' name='action' value="0"/><button class="btn btn-outline-light" type="submit">Delete</button></form>
+          {% if not pants[i]['bag'] %}
+          <form action='/backpack_add' method='POST'><input type='hidden' name='backpack_add' value="{{pants[i]['id']}}"/><button class="btn btn-outline-light" type="submit">To backpack</button></form>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselPantsCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselPantsCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+{% endif %}
+{% if not pants and not jacket and not underjacket %}
+<h5>Lets <a href="/" class="yellow">pack items.</a></h5>
+{%endif%}
+                    {% endblock %}

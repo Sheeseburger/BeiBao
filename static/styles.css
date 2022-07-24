@@ -1,0 +1,143 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+    color:#FEC702;
+}
+
+/* Colors for brand */
+.nav-link{
+    color:#FEC702;
+}
+
+body{
+    background-color:#262626;
+    color: #FEC702;
+}
+
+.yellow
+{
+    color:#FEC702;
+}
+
+label{
+    margin-bottom:5px;
+    background-color:#262626;
+    color:#FEC702;
+}
+nav{
+    border:2px solid #FEC702;
+
+}
+
+#photo{
+    width:100%;
+    margin:0 auto;
+}
+
+input[type="password"], textarea, input[type="text"],input[type="hidden"],input[type="file"] {
+    background-color : #262626;
+    border-color: #FEC702;
+    color: #FEC702;
+    font-family: Times New Roman;
+}
+
+td{
+    color:#FEC702;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="hidden"]:focus, input[type="file"]:focus{
+    background-color : #000000;
+    border-color: #FEC702;
+    color: #FEC702;
+    font-family: Times New Roman;
+}
+
+.carousel {
+    width:20%;
+    margin: 0 auto;
+}
+
+.mr-auto{
+    margin-right:0;
+}
+
+.form-control, .for{
+    background-color : #262626;
+    border-color: #FEC702;
+    color: #FEC702;
+    font-family: Times New Roman;
+}
+
+.center{
+    text-align:center;
+    display:block;
+    margin:0 auto;
+    margin-bottom:5px;
+}
+
+#generateList{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+}
+.generateItem{
+    margin-right:10px;
+}
+.size{
+    width:15%;
+    height:auto;
+}
+.first{
+    display:flex;
+    justify-content:center;
+}
+
+h5{
+    text-align:center;
+}
+
+form input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.createList {
+    list-style-type: none;
+}
+
+.createItem {
+    display: inline-block;
+}
+
+.clean{
+    display: none;
+}
+
+label {
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+}
+
+  label img {
+    height: 100px;
+    width: 100px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+  }
+
+  :checked+label::before {
+    content: "✓";
+    background-color: #FEC702;
+    color:#262626;
+    border-radius:5px;
+  }
+
+  :checked+label img {
+    transform: scale(0.9);
+    border:1px solid #FEC702;
+    border-radius:5px;
+  }

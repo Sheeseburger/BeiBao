@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Add
+{% endblock %}
+
+{% block main %}
+    <form action="/add" method="post" enctype="multipart/form-data">
+          <input class="form-control" name='photo' id='photo' class='form-control' placeholder="choose img" type='file'>
+          <hr>
+
+          <label id='label_input'class='form-control center'for="item_typs_choice">Choose an item type:</label>
+          <input list="item_types" autocomplete="off" id="item_types_choice" name="item_types_choice" class="for">
+          <datalist id="item_types">
+              {% for item in items%}
+              <option type='hidden' value="{{item.name}}" value="{{item.id}}"><input type="hidden" value="{{item.id}}" name="{{item.name}}">
+              {% endfor %}
+
+          </datalist>
+          <br>
+        <button class="btn btn-outline-warning center" type="submit">Add to wardrobe</button>
+    </form>
+{% endblock %}

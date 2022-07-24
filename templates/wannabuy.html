@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Wanna Buy
+{% endblock %}
+{% block head%}
+<script>
+  window.onload = function(){
+    console.log('foo')
+     let btn = document.querySelectorAll(".add");
+     for (let i = 0;i < btn.length; i++){
+        btn[i].addEventListener('click',function(){
+          let out = document.querySelector('#output');
+          out.innerHTML = `<form action="/wardrobe_add" method="POST"><input type="hidden" name="item_link" value="${btn[i].value}"/><input list="item_types" autocomplete="off" id="item_types_choice" name="item_types_choice" class="for"><datalist id="item_types">{% for item in items%}<option type='hidden' value="{{item.name}}"><input type="hidden" value="{{item.id}}" name="{{item.name}}">{% endfor %}</datalist><br><button class="btn btn-outline-warning center" type="submit">add</button></form>`;
+        })
+  }
+  }
+</script>
+{% endblock %}
+{% block main %}
+<div class="btn-group center" >
+  <form action="/wannabuy" method="post" enctype="multipart/form-data">
+    <input class="form-control" name='photo' id='wannabuy_photo' class='form-control' placeholder="choose img" type='file'>
+    <br>
+    <button class="btn btn-outline-warning" type="submit">
+      Add
+    </button>
+  </form>
+</div>
+{% if rows %}
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    {% for i in range(1,len) %}
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{i}}" aria-label="Slide {{i}}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+    {%for i in range(len) %}
+    {% if i == 0 %}
+    <div class="carousel-item active" id="{{i}}">
+    {% else %}
+    <div class="carousel-item " id="{{i}}">
+      {% endif %}
+      <img src="{{rows[i]['picture']}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <p>
+          <form action='/delete' method='POST'><input type='hidden' name='delete_item' value="{{rows[i]['id']}}"/><input type='hidden' name='delete_link' value="{{rows[i]['picture']}}"><input type='hidden' name='action' value="1"/><button class="btn btn-outline-light" type="submit">Remove</button></form>
+          <button class="btn btn-outline-light add" value="{{rows[i]['picture']}}" type="submit">To wardrobe</button></form>
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% endif %}
+<p id="output"></p>
+
+{% endblock %}

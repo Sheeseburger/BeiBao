@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create
+{% endblock %}
+
+{% block main %}
+{% if rows%}
+<h5>Pick items. But be clever.One pair of pants,one t-shirt.</h5>
+<ul class="createList">
+<form action="/create" method="POST">
+{% for i in range(len) %}
+        <li class="createItem"><input type="checkbox" class='clean' name="cb" id="{{i}}" value="{{rows[i]}}"/>
+          <label for="{{i}}"><img src="{{rows[i]['picture']}}"/></label>
+        </li>
+{% endfor %}
+</ul>
+<button class="btn btn-outline-warning center" type="submit">Create</button>
+</form>
+{% else %}
+<h5><a href="/add" class="yellow">Add</a> items first to your wardrobe</h5>
+{% endif%}
+{% endblock %}

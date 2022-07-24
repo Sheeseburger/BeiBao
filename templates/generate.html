@@ -1,0 +1,22 @@
+    {% extends "layout.html" %}
+
+    {% block title %}
+        Generate
+    {% endblock %}
+
+    {% block main %}
+    <h5 class="center" class="h5"> Lets generate an outfit.</h5>
+    <ul id="generateList">
+        <li class ='generateItem'><form action='/generate' method='POST'><button class="btn btn-outline-warning center">Generate an outfit</button></form></li>
+        <li ><form action='/outfit_add' method="POST"><input value='{% for row in rows %}{{row["id"]}} {%endfor%}' type='hidden' name="outfit_add_input"/><button class="btn btn-outline-warning center">Add to favorite</button></form></li>
+    </ul>
+    {% if rows %}
+    <h5>Temperature = {{temperature}}.Weather is {{weather}}</h5>
+    {% for row in rows%}
+    <img src="{{row['picture']}}" class="d-flow w-25 rounded size float" alt="...">
+
+    {% endfor %}
+    {% else %}
+    <h5>Press the button</h5>
+    {% endif %}
+    {% endblock %}

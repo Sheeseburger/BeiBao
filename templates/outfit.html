@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Outfits
+{% endblock %}
+
+{% block main %}
+
+{% if rows %}
+<h5><a href='/create' class="yellow">Lets create new outfit</a> or <a href='/generate' class="yellow">generate</a>.</h5>
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    {% for i in range(1,len) %}
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{i}}" aria-label="Slide {{i}}"></button>
+    {% endfor %}
+  </div>
+  <div class="carousel-inner">
+    {%for i in range(len) %}
+    {% if i == 0 %}
+    <div class="carousel-item active" id="{{i}}">
+    {% else %}
+    <div class="carousel-item " id="{{i}}">
+      {% endif %}
+      {% for r in rows[i]%}
+      <img src="{{r}}" class="d-block w-100" alt="...">
+      {% endfor %}
+      <div class="carousel-caption d-none d-md-block">
+        <p>
+          <form action='/outfits_delete' method='POST'><input type='hidden' name='delete_item' value="{{id[i]}}"/><button class="btn btn-outline-light" type="submit">Delete</button></form>
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+{% else %}
+<h5>You don't have your favorite outfits.<a href='/create' class="yellow">Lets create</a> or <a href='/generate' class="yellow">generate</a>.</h5>
+{% endif%}
+{% endblock %}
