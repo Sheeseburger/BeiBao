@@ -3,7 +3,7 @@
 
 ## Welcome to BeiBao
 >This is the final project of [CS50x](https://cs50.harvard.edu/x/2020/). It is a web application that helps you manage own virtual wardrobe.
-> Project was created by @Sheeseburger and @
+> Project was created by @Sheeseburger and @annabellehere
 ## Explaining the project and the database
 Our final project is a website that allow the user to:
 1. Add clothes to wardrobe.
