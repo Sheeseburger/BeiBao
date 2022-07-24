@@ -15,7 +15,7 @@ Our final project is a website that allow the user to:
 3. Generate outfit,that matches user's temperature.
     - Save outfit to favourite.
 4. Create own outfit.
-5. Look in
+5. Look in trends.
 
 ### Database:
 We needed five tables for our database:
